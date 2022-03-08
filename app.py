@@ -36,6 +36,12 @@ def writeall(reanwdata):
     f.close()
     print('end')
 
+@app.route('/')
+def cafe():
+    return "wakeup!"
+
+
+
 @app.route('/param')
 def hello():
 
