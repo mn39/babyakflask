@@ -19,11 +19,10 @@ def writeall(reanwdata):
     data.append(reanwdata)
 
     print(data,'this is data')
-
     nw = set(data[0][1])
     for n,date in data: 
         nw = nw&set(date)
-
+    print(nw, 'poss date!!')
     f=open("memory.txt",'w')
     for n,date in data:
         f.write(n)
@@ -35,12 +34,15 @@ def writeall(reanwdata):
     f.write('\n')
     f.write(str(list(nw)))
     f.close()
+    print('end')
 
 @app.route('/param')
 def hello():
 
     a = request.args.get('pname')
     b = request.args.get('possDate')
+    if(a==None or b == None):
+        return "sorry please check your name or possible days"
     writeall([a,b.split(',')])
     return "thx"
 
